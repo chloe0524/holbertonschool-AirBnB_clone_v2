@@ -70,7 +70,3 @@ class DBStorage:
     def reload(self):
         """Creates all tables in the database + current database session"""
         BaseModel.metadata.create_all(self.__engine)
-
-    def close(self):
-        """Closes session"""
-        self.__session.remove()
