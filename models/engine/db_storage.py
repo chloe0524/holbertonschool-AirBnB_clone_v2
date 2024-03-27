@@ -13,6 +13,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+from models.base_model import Base
 
 
 class DBStorage:
@@ -69,4 +70,4 @@ class DBStorage:
 
     def reload(self):
         """Creates all tables in the database + current database session"""
-        BaseModel.metadata.create_all(self.__engine)
+        Base.metadata.create_all(self.__engine)

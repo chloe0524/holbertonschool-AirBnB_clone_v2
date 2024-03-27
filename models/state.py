@@ -5,11 +5,11 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from engine.file_storage import FileStorage
+from models import FileStorage
 from models.city import City
 
 
-class State(BaseModel):
+class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
 
