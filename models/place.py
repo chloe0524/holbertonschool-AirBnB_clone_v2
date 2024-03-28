@@ -1,11 +1,35 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
+from models import FileStorage
+from models.amenity import Amenity
 from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy import Integer
 from sqlalchemy import Float
 from sqlalchemy import ForeignKey
+from sqlalchemy import Table
+from sqlalchemy.orm import relationship
+
+
+metadata = Base.metadata
+place_amenity = Table(
+    'place_amenity', metadata,
+    Column(
+        'place_id',
+        String(60),
+        ForeignKey('places.id'),
+        primary_key=True,
+        nullable=False
+    ),
+    Column(
+        'amenity_id',
+        String(60),
+        ForeignKey('amenities.id'),
+        primary_key=True,
+        nullable=False
+    )
+)
 
 
 class Place(BaseModel, Base):
@@ -23,3 +47,18 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
     amenity_ids = []
+    amenities = relationship('Amenity', secondary='place_amenity',
+                             back_populates='place_amenities', viewonly=False)
+
+    @property
+    def amenities(self):
+        amenity_list = []
+        for amenity in FileStorage.all(Amenity):
+            if amenity.id in self.amenity_ids:
+                amenity_list.append(amenity)
+        return amenity_list
+
+    @amenities.setter
+    def amenities(self, amenities):
+        if isinstance(amenities, Amenity):
+            self.amenity_ids.append(amenities.id)
