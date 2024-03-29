@@ -30,13 +30,13 @@ class BaseModel:
             if 'created_at' not in kwargs:
                 self.created_at = datetime.now()
             else:
-                kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
-                                                         '%Y-%m-%dT%H:%M:%S.%f')
+                kwargs['created_at'] = datetime.strptime(
+                    kwargs['created_at'], '%Y-%m-%dT%H:%M:%S.%f')
             if 'updated_at' not in kwargs:
                 self.updated_at = datetime.now()
             else:
-                kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
-                                                         '%Y-%m-%dT%H:%M:%S.%f')
+                kwargs['updated_at'] = datetime.strptime(
+                    kwargs['updated_at'], '%Y-%m-%dT%H:%M:%S.%f')
             if '__class__' in kwargs:
                 del kwargs['__class__']
             for key, value in kwargs.items():
