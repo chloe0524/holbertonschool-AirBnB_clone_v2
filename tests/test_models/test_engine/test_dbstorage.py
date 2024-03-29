@@ -23,10 +23,6 @@ class TestDBStorage(unittest.TestCase):
         """teardown"""
         pass
 
-    def test_all(self):
-        """all"""
-        pass
-
     def test_all_with_class_argument(self):
         """test returns all objects of a class"""
         with patch('sys.stdout', new=MagicMock()) as mock_stdout:
@@ -57,21 +53,55 @@ class TestDBStorage(unittest.TestCase):
             all_objects = self.storage.all()
             self.assertEqual(len(all_objects), 0)
 
+    class TestDBStorage(unittest.TestCase):
+    '''DBStorage tests'''
+
+    def setUp(self):
+        """SetUp env for test"""
+        self.storage = DBStorage()
+
+    def tearDown(self):
+        """teardown"""
+        pass
+
+    def test_all(self):
+        """all"""
+        user = User()
+        self.storage.new(user)
+        self.storage.save()
+        all_objects = self.storage.all()
+        self.assertIn(user, all_objects.values())
+
+
     def test_new(self):
         """new """
-        pass
+        user = User()
+        self.storage.new(user)
+        self.assertIn(user, self.storage.all(User).values())
 
     def test_save(self):
         """save"""
-        pass
+        user = User()
+        self.storage.new(user)
+        self.storage.save()
+        self.assertIn(user, self.storage.all(User).values())
 
     def test_delete(self):
         """delete"""
-        pass
+        user = User()
+        self.storage.new(user)
+        self.storage.save()
+        self.storage.delete(user)
+        self.assertNotIn(user, self.storage.all(User).values())
 
     def test_reload(self):
         """reload"""
-        pass
+        user = User()
+        self.storage.new(user)
+        self.storage.save()
+        self.storage.reload()
+        self.assertIn(user, self.storage.all(User).values())
+
 
 if __name__ == "__main__":
     unittest.main()
