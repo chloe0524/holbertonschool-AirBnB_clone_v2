@@ -6,10 +6,10 @@ This repository contains the initial stage of a student project to build a clone
 
 ### Forked by:
 
-**+ ``Gilles``**
-infos are missing
+**+ ``Gilles Richard``**
 
-**+ ``Chloé``**
+
+**+ ``Chloe Correia``**
 infos are missing
 
 ### authors behind the original repository:
