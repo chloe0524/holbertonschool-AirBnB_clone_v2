@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
-from models import FileStorage
 from models.amenity import Amenity
 from sqlalchemy import Column
 from sqlalchemy import String
@@ -53,8 +52,9 @@ class Place(BaseModel, Base):
     @property
     def amenities(self):
         amenity_list = []
-        for amenity in FileStorage.all(Amenity):
-            if amenity.id in self.amenity_ids:
+        from models.__init__ import storage
+        for amenity in storage.all(Amenity):
+            if amenity not in self.amenity_ids:
                 amenity_list.append(amenity)
         return amenity_list
 
