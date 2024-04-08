@@ -94,16 +94,16 @@ def html_task_6(n):
             "A little. Special day, graduation."
         )
 
-    @app.teardown_appcontext
-    def teardown(exception):
-        """fghjkl;"""
-        storage.close()
+@app.teardown_appcontext
+def teardown(exception):
+    """fghjkl;"""
+    storage.close()
 
-    @app.route('/states_list', strict_slashes=False)
-    def usa_state_list():
-        """ list of all State in db"""
-        states = storage.all(State).values()
-        return render_template("7-states_list.html", states=states)
+@app.route('/states_list', strict_slashes=False)
+def usa_state_list():
+    """ list of all State in db"""
+    states = storage.all(State).values()
+    return render_template("7-states_list.html", states=states)
 
 
 if __name__ == "__main__":
