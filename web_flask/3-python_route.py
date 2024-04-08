@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""define new route message with value + text attached to it"""
+"""define new route message with value + text"""
 
 from flask import Flask
 
