@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""define new route message"""
+"""define new route message with value attached to it"""
 
 from flask import Flask
 
@@ -19,6 +19,7 @@ def hey_route_2():
 
 @app.route("/c/<text>", strict_slashes=False)
 def text_route(text):
+    text = text.replace("_", " ")
     return "C {}".format(text)
 
 
