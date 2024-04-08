@@ -1,4 +1,4 @@
-```markdown
+
 # AirBnB Clone - Web Framework
 
 ## Introduction
@@ -52,5 +52,3 @@ very introductory this introduction
 ## Repository Information
 - **GitHub Repository:** [holbertonschool-AirBnB_clone_v2](https://github.com/holbertonschool/AirBnB_clone_v2)
 - **Directory:** web_flask
-
-```
