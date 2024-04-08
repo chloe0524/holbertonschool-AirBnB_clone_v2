@@ -99,13 +99,12 @@ def html_task_6(n):
         """fghjkl;"""
         storage.close()
 
-
     @app.route('/states_list', strict_slashes=False)
     def usa_state_list():
         """ list of all State in db"""
         states = storage.all(State).values()
-        states_sort = sorted(states, key=lambda state: state.name)
-        return render_template("7-states_list.html", states=states_sort)
+        return render_template("7-states_list.html", states=states)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
