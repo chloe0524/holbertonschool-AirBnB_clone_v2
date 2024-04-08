@@ -23,7 +23,7 @@ def text_route(text):
     return "C {}".format(text)
 
 
-@app.route("/c/<text>", strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
 def python_route(text):
     text = "is cool"
     return "C {}".format(text.replace("_", " "))
