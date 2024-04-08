@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """define new route message if n is integer"""
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
