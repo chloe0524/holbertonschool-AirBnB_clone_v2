@@ -141,7 +141,6 @@ class HBNBCommand(cmd.Cmd):
                     except ValueError:
                         pass
             setattr(new_instance, pair[0], pair[1])
-        new_instance.save()
         storage.save()
         print(new_instance.id)
 
@@ -225,12 +224,12 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage.all(HBNBCommand.classes[args]).items():
+            for k, v in storage._FileStorage__objects.items():
                 if k.split('.')[0] == args:
-                    print_list.append(v.to_dict())
+                    print_list.append(str(v))
         else:
-            for k, v in storage.all().items():
-                print_list.append(v.to_dict())
+            for k, v in storage._FileStorage__objects.items():
+                print_list.append(str(v))
 
         print(print_list)
 
@@ -302,7 +301,7 @@ class HBNBCommand(cmd.Cmd):
             if not att_name and args[0] != ' ':
                 att_name = args[0]
             # check for quoted val arg
-            if args[2] and args[2][0] == '\"':
+            if args[2] and args[2][0] != '\"':
                 att_val = args[2][1:args[2].find('\"', 1)]
 
             # if att_val was not quoted arg
