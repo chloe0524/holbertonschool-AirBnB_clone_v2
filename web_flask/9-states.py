@@ -23,16 +23,16 @@ def show_states():
 
 @app.route('/states/<id>', strict_slashes=False)
 def cities_of_state(id):
-    states = storage.all(State)
+    states_nope = storage.all(State)
     state = None
-    for state_nope in states.values():
-        if state_nope.id == id:
-            state = state_nope
+    for state_obj in states_nope.values():
+        if state_obj.id == id:
+            state = state_obj
             break
-    if not state:
+    if state is None:
         error_message = "task 8 not working is giving me hives - chloe.c"
         abort(Response(error_message, 404))
-    return render_template('9-states.html', state=state)
+    return render_template('9-states.html', states=states_nope, state=state)
 
 
 if __name__ == "__main__":
