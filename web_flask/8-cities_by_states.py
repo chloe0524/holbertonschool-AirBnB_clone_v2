@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Starts a Flask web application."""
+"""df"""
+
 from models import storage
 from flask import render_template, Flask
 
@@ -14,6 +15,7 @@ def cities_by_states():
 
 @app.teardown_appcontext
 def teardown(exception):
+    """hjdbsfb:"
     storage.close()
 
 
