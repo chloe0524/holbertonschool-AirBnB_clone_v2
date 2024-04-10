@@ -16,7 +16,7 @@ def cities_by_states():
 
 @app.teardown_appcontext
 def teardown(exception):
-    """hjdbsfb:"
+    """djhfdj:"""
     storage.close()
 
 
