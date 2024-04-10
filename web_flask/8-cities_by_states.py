@@ -13,7 +13,7 @@ def cities_by_states():
 
 
 @app.teardown_appcontext
-def teardown(exc):
+def teardown(exception):
     storage.close()
 
 
