@@ -25,7 +25,7 @@ def show_states():
 def filter_for_task():
     """show filters"""
     states = storage.all(State).values()
-    amenity = storage.all(Amenity).values
+    amenity = storage.all(Amenity).values()
     return render_template("10-hbnb_filters.html",
                            states=states, amenities=amenity)
 
